@@ -1,5 +1,10 @@
-#include <GLFW/glfw3.h>
+/* Crystal Engine */
+#include <crystal_engine/window.h>
 
-int main(int argc, char **argv) {
-   
+int main() {
+    /* Create a window and show it */
+    CrystalEngine::Window example_window(800, 600, "Example");
+    example_window.show();
+
+    return 0; 
 }

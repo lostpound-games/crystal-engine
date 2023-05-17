@@ -9,9 +9,9 @@
 struct GLFWwindow;
 
 /* Crystal Engine */
-namespace crysal_engine {
+namespace CrystalEngine {
 
-/* An abstract window class */
+/* A window class */
 class Window {
 public:
     /* Create a window with the given width, height and title */
@@ -23,7 +23,7 @@ public:
     Window(const Window &) = delete;
     /* Prevent copying */
     Window &operator=(const Window &) = delete;
-    
+
     /* Prevent moving */
     Window(Window &&) = delete;
     /* Prevent moving */
@@ -38,9 +38,9 @@ public:
     virtual bool closed() const;
 
     /* Start the window */
-    virtual void start() = 0;
+    virtual void start();
     /* Update the window */
-    virtual void update() = 0;
+    virtual void update();
 
     /* Clear the window */
     virtual void clear();
@@ -49,8 +49,19 @@ public:
     /* Poll events */
     virtual void poll_events();
 
+    /* Show the window */
+    virtual void show();
+
     /* Is any window opened? */
     static bool any_window_opened();
+
+    /* Is the window opened? */
+    bool operator!() const;
+    /* Is the window opened? */
+    operator bool() const;
+
+    /* Get the window */
+    operator GLFWwindow *() const;
 
 private:
     /* The window */
