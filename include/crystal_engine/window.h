@@ -3,6 +3,7 @@
 
 /* C++ */
 #include <string>
+#include <stdexcept>
 
 /* GLFW */
 struct GLFWwindow;
@@ -15,6 +16,19 @@ class Window {
 public:
     /* Create a window with the given width, height and title */
     Window(int width, int height, const std::string &title);
+    /* Create a window with the given title */
+    Window(const std::string &title);
+
+    /* Prevent copying */
+    Window(const Window &) = delete;
+    /* Prevent copying */
+    Window &operator=(const Window &) = delete;
+    
+    /* Prevent moving */
+    Window(Window &&) = delete;
+    /* Prevent moving */
+    Window &operator=(Window &&) = delete;
+
     /* Destroy the window */
     virtual ~Window();
 
@@ -35,9 +49,14 @@ public:
     /* Poll events */
     virtual void poll_events();
 
+    /* Is any window opened? */
+    static bool any_window_opened();
+
 private:
     /* The window */
-    GLFWwindow *window;
+    GLFWwindow *m_window;
+    /* Is any window opened? */
+    static bool s_any_window_opened; 
 };
 
 } /* namespace crysal_engine */
