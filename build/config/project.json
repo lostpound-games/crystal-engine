@@ -1,0 +1,28 @@
+{
+    "project_name": "crystal",
+    "application_type": "exe",
+    "cpp_version": "c++11",
+    
+    "source_dir": [
+        "src"
+    ],
+    
+    "include_dir": [
+        "include",
+        "dependencies/include"
+    ],
+    
+    "library_dir": [
+        "dependencies/lib"
+    ],
+    
+    "library": [
+        "glfw3",
+        "opengl32",
+        "gdi32"
+    ],
+    
+    "preprocessor": [
+        
+    ]
+}
